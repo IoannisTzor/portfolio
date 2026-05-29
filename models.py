@@ -1,10 +1,10 @@
-from app import db
+from extensions import db
 
 class Project(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(100), nullable=False)
     description = db.Column(db.Text, nullable=True)
-    contributors = db.Column(db.String(200), nullable=False)
+    contributors = db.Column(db.String(200), nullable=True)
     technologies = db.Column(db.String(200), nullable=False)
     github_url = db.Column(db.String(200))
     live_url = db.Column(db.String(200))

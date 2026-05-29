@@ -8,5 +8,10 @@
 <body>
     <h1>Hello, I'm Ioannis</h1>
     <p>Portfolio coming soon.</p>
+    {% for project in projects %}
+    <p>{{ project.title }}</p>
+    <p>{{ project.description }}</p>
+    <p>{{ project.technologies }}</p>
+    {% endfor %}
 </body>
 </html>

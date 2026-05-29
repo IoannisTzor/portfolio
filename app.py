@@ -1,5 +1,6 @@
 from flask import Flask, render_template
-from flask_sqlalchemy import SQLAlchemy
+from extensions import db
+from models import Project
 
 app = Flask(__name__)
 
@@ -7,11 +8,13 @@ app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///portfolio.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-db = SQLAlchemy(app)
+db.init_app(app)
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    projects = Project.query.all()
+    return render_template('index.html',projects = projects)
+
 
 with app.app_context():
     db.create_all()
