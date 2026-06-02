@@ -3,15 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&family=Share+Tech+Mono&display=swap" rel="stylesheet">
     <title>Ioannis Tzortzatos</title>
 </head>
 <body>
-    <h1>Hello, I'm Ioannis</h1>
-    <p>Portfolio coming soon.</p>
-    {% for project in projects %}
-    <p>{{ project.title }}</p>
-    <p>{{ project.description }}</p>
-    <p>{{ project.technologies }}</p>
-    {% endfor %}
+<nav>
+    <span class="nav-logo">IT.exe</span>
+    <div class="nav-links">
+        <a href="#projects">projects</a>
+        <a href="#skills">skills</a>
+        <a href="#contact">contact</a>
+    </div>
+</nav>
+<section class="hero">
+    <div class="hero-name">
+        IOANNIS TZORTZATOS<span class="cursor"></span>
+    </div>
+    <div class="hero-subtitle">&gt; CS STUDENT / DEVELOPER / GAME DESIGNER</div>
+    <div class="hero-bio">
+        Final year Computer Science student with a Game Design Thinking minor. 
+        I build Android apps, databases, and games — and I'm looking for junior 
+        opportunities in software or backend development.
+    </div>
+    <div class="hero-stats">
+        <div class="stat">
+            <span class="stat-label">GPA</span>
+            <span class="stat-value">3.94</span>
+        </div>
+        <div class="stat">
+            <span class="stat-label">INTERNSHIPS</span>
+            <span class="stat-value">3x</span>
+        </div>
+        <div class="stat">
+            <span class="stat-label">PROJECTS</span>
+            <span class="stat-value">03</span>
+        </div>
+    </div>
+</section>
 </body>
 </html>
