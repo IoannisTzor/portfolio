@@ -43,5 +43,22 @@
         </div>
     </div>
 </section>
+<div class="section-label">// PROJECTS</div>
+<div class="projects-grid" id="projects">
+    {% for project in projects %}
+    <div class="project-card">
+        <div class="project-title">{{ project.title }}</div>
+        <div class="project-desc">{{ project.description }}</div>
+        <div class="project-tags">
+            {% for tag in project.technologies.split(',') %}
+            <span class="tag">{{ tag.strip() }}</span>
+            {% endfor %}
+        </div>
+        {% if project.github_url %}
+        <a href="{{ project.github_url }}" class="project-link" target="_blank">&gt; view on github</a>
+        {% endif %}
+    </div>
+    {% endfor %}
+</div>
 </body>
 </html>

@@ -138,3 +138,89 @@ nav {
     font-size: 16px;
     color: var(--text);
 }
+.section-label {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 9px;
+    color: var(--pink);
+    padding: 32px 32px 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: rgba(255, 110, 199, 0.2);
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+    padding: 0 32px 48px;
+}
+
+.project-card {
+    background: var(--bg-card);
+    border: 2px solid var(--border);
+    padding: 20px;
+    position: relative;
+    transition: border-color 0.2s;
+}
+
+.project-card:hover {
+    border-color: var(--cyan);
+}
+
+.project-card::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    right: -2px;
+    width: 12px;
+    height: 12px;
+    background: var(--cyan);
+}
+
+.project-title {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 9px;
+    color: var(--text);
+    margin-bottom: 12px;
+    line-height: 1.6;
+}
+
+.project-desc {
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.8;
+    margin-bottom: 16px;
+}
+
+.project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+.tag {
+    background: var(--bg-dark);
+    border: 1px solid rgba(0, 255, 204, 0.3);
+    color: var(--cyan);
+    font-size: 11px;
+    padding: 3px 10px;
+}
+
+.project-link {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 7px;
+    color: var(--pink);
+    text-decoration: none;
+}
+
+.project-link:hover {
+    color: var(--cyan);
+}
