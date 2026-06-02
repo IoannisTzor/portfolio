@@ -19,27 +19,38 @@
     </div>
 </nav>
 <section class="hero">
-    <div class="hero-name">
-        IOANNIS TZORTZATOS<span class="cursor"></span>
-    </div>
-    <div class="hero-subtitle">&gt; CS STUDENT / DEVELOPER / GAME DESIGNER</div>
-    <div class="hero-bio">
-        Final year Computer Science student with a Game Design Thinking minor. 
-        I build Android apps, databases, and games — and I'm looking for junior 
-        opportunities in software or backend development.
-    </div>
-    <div class="hero-stats">
-        <div class="stat">
-            <span class="stat-label">GPA</span>
-            <span class="stat-value">3.94</span>
+    <div class="hero-inner">
+        <div class="hero-left">
+            <div class="hero-name">
+                IOANNIS TZORTZATOS<span class="cursor"></span>
+            </div>
+            <div class="hero-subtitle">&gt; CS STUDENT / DEVELOPER / GAME DESIGNER</div>
+            <div class="hero-bio">
+                Final year Computer Science student with a Game Design Thinking minor. 
+                I build Android apps, databases, and games — and I'm looking for junior 
+                opportunities in software or backend development.
+            </div>
+            <div class="hero-stats">
+                <div class="stat">
+                    <span class="stat-label">GPA</span>
+                    <span class="stat-value">3.94</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-label">INTERNSHIPS</span>
+                    <span class="stat-value">3x</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-label">PROJECTS</span>
+                    <span class="stat-value">03</span>
+                </div>
+            </div>
         </div>
-        <div class="stat">
-            <span class="stat-label">INTERNSHIPS</span>
-            <span class="stat-value">3x</span>
-        </div>
-        <div class="stat">
-            <span class="stat-label">PROJECTS</span>
-            <span class="stat-value">03</span>
+        <div class="hero-right">
+            <div class="terminal">
+                <div class="terminal-bar">PROFILE.EXE</div>
+                <div id="terminal-output"></div>
+                <span class="terminal-cursor" id="terminal-cursor"></span>
+            </div>
         </div>
     </div>
 </section>
@@ -60,8 +71,8 @@
     </div>
     {% endfor %}
 </div>
-<div class="section-label"> //  SKILLS</div>
-<div class="skills-grid"> 
+<div class="section-label">// SKILLS</div>
+<div class="skills-grid" id="skills"> 
     <div class = "skill">java</div>
     <div class = "skill">C#</div>
     <div class = "skill">Python</div>
@@ -71,9 +82,54 @@
     <div class = "skill">Android Studio</div>
     <div class = "skill">Flask</div>
 </div>
+<script>
+    const lines = [
+        "> LOADING PROFILE...",
+        "> NAME: IOANNIS TZORTZATOS",
+        "> DEGREE: BSC COMPUTER SCIENCE",
+        "> MINOR: GAME DESIGN THINKING",
+        "> GPA: 3.94",
+        "> INTERNSHIPS: 3",
+        "> STATUS: SEEKING JUNIOR ROLE",
+        "> READY."
+    ];
+
+    const output = document.getElementById('terminal-output');
+    const cursor = document.getElementById('terminal-cursor');
+    let lineIndex = 0;
+    let charIndex = 0;
+    let currentDiv = null;
+
+    function type() {
+        if (lineIndex >= lines.length) {
+            cursor.style.display = 'none';
+            return;
+        }
+
+        if (charIndex === 0) {
+            currentDiv = document.createElement('div');
+            currentDiv.classList.add('terminal-line');
+            output.appendChild(currentDiv);
+        }
+
+        currentDiv.textContent = lines[lineIndex].slice(0, charIndex + 1);
+        charIndex++;
+
+        if (charIndex >= lines[lineIndex].length) {
+            currentDiv.classList.add('done');
+            lineIndex++;
+            charIndex = 0;
+            setTimeout(type, 400);
+        } else {
+            setTimeout(type, 40);
+        }
+    }
+
+    type();
+</script>
 </body>
 <footer>
-        <div class="footer-copy">@ 2026 IOANNIS TZORTZATOS</div>
+        <div class="footer-copy" id="contact">@ 2026 IOANNIS TZORTZATOS</div>
         <div class="footer-links">
             <a href="https://github.com/IoannisTzor" target="_blank">Github</a>
             <a href="https://www.linkedin.com/in/ioannis-tzortzatos-659671282/" target="_blank">Linkedin</a>

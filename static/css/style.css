@@ -117,7 +117,56 @@ nav {
     gap: 16px;
     flex-wrap: wrap;
 }
+.hero-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 32px;
+}
 
+.hero-left {
+    flex: 1;
+}
+
+.hero-right {
+    flex: 0 0 320px;
+}
+
+.terminal {
+    background: var(--bg-dark);
+    border: 2px solid var(--cyan);
+    padding: 20px;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 13px;
+}
+
+.terminal-bar {
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 10px;
+    margin-bottom: 16px;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 7px;
+    color: var(--text-muted);
+}
+
+.terminal-line {
+    color: var(--cyan);
+    line-height: 2;
+    min-height: 26px;
+}
+
+.terminal-line.done {
+    color: var(--text-muted);
+}
+
+.terminal-cursor {
+    display: inline-block;
+    width: 8px;
+    height: 14px;
+    background: var(--cyan);
+    vertical-align: middle;
+    animation: blink 1s step-end infinite;
+}
 .stat {
     background: var(--bg-card);
     border: 1px solid rgba(0, 255, 204, 0.3);
