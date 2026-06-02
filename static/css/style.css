@@ -245,3 +245,31 @@ nav {
     border-color: var(--pink);
     color: var(--text);
 }
+footer {
+    border-top: 2px solid var(--border);
+    padding: 24px 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-copy {
+    font-size: 13px;
+    color: var(--text-muted);
+}
+
+.footer-links {
+    display: flex;
+    gap: 20px;
+}
+
+.footer-links a {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 9px;
+    color: var(--cyan);
+    text-decoration: none;
+}
+
+.footer-links a:hover {
+    color: var(--pink);
+}
