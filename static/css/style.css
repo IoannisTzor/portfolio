@@ -224,3 +224,24 @@ nav {
 .project-link:hover {
     color: var(--cyan);
 }
+.skills-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 0 32px 48px;
+}
+
+.skill {
+    background: var(--bg-card);
+    border: 1px solid rgba(255, 110, 199, 0.3);
+    color: var(--pink);
+    font-family: 'Press Start 2P', monospace;
+    font-size: 7px;
+    padding: 10px 16px;
+    transition: border-color 0.2s, color 0.2s;
+}
+
+.skill:hover {
+    border-color: var(--pink);
+    color: var(--text);
+}
