@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <title>Ioannis Tzortzatos</title>
+</head>
+<body>
+<div class="page-wrapper">
+    <nav>
+        <span class="nav-logo">IT.exe</span>
+        <div class="nav-links">
+            <a href="/">home</a>
+            <a href="/#projects">projects</a>
+            <a href="/#skills">skills</a>
+            <a href="/contact">contact</a>
+        </div>
+    </nav>
+    <main>
+<section class="contact-section">
+    <div class="hero-subtitle">// CONTACT</div>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <div class="flash-message">&gt; {{ message }}</div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    <form method="POST" action="/contact" class="contact-form">
+        <div class="form-group">
+            <label class="form-label">NAME</label>
+            <input type="text" name="name" class="form-input" required>
+        </div>
+        <div class="form-group">
+            <label class="form-label">EMAIL</label>
+            <input type="email" name="email" class="form-input" required>
+        </div>
+        <div class="form-group">
+            <label class="form-label">MESSAGE</label>
+            <textarea name="message" class="form-input" required></textarea>
+        </div>
+        <button type="submit" class="submit-btn">&gt; SEND MESSAGE</button>
+    </form>
+</section>
+    </main>
+    <footer>
+        <div class="footer-copy" id="contact">@ 2026 IOANNIS TZORTZATOS</div>
+        <div class="footer-links">
+            <a href="https://github.com/IoannisTzor" target="_blank">Github</a>
+            <a href="https://www.linkedin.com/in/ioannis-tzortzatos-659671282/" target="_blank">Linkedin</a>
+        </div>
+    </footer>
+</div>
