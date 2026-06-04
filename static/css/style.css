@@ -390,3 +390,8 @@ footer {
 .page-wrapper main {
     flex: 1;
 }
+.card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
