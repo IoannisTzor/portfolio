@@ -15,6 +15,10 @@ def index():
     projects = Project.query.all()
     return render_template('index.html',projects = projects)
 
+@app.route('/project/<int:project_id>')
+def project(project_id):
+    project = Project.query.get(project_id)
+    return render_template('project.html', project=project)
 
 with app.app_context():
     db.create_all()

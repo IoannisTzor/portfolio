@@ -322,3 +322,71 @@ footer {
 .footer-links a:hover {
     color: var(--pink);
 }
+.project-hero {
+    padding: 48px 32px;
+    border-bottom: 2px solid var(--border);
+}
+
+.project-back {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 7px;
+    color: var(--text-muted);
+    text-decoration: none;
+    display: inline-block;
+    margin-bottom: 24px;
+}
+
+.project-back:hover {
+    color: var(--cyan);
+}
+
+.project-hero-title {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 20px;
+    color: var(--text);
+    line-height: 1.5;
+    margin-bottom: 16px;
+}
+
+.project-hero-desc {
+    font-size: 15px;
+    color: var(--text-muted);
+    max-width: 700px;
+    line-height: 1.9;
+    margin-bottom: 24px;
+}
+
+.project-meta {
+    display: flex;
+    gap: 32px;
+    flex-wrap: wrap;
+    margin-top: 24px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+}
+
+.project-meta-item {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.project-meta-label {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 7px;
+    color: var(--pink);
+}
+
+.project-meta-value {
+    font-size: 13px;
+    color: var(--text);
+}
+.page-wrapper {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.page-wrapper main {
+    flex: 1;
+}
