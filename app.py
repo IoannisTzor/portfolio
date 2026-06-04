@@ -12,7 +12,7 @@ app.secret_key = os.environ.get('SECRET_KEY')
 auth = HTTPBasicAuth()
 
 users = {
-    "admin": generate_password_hash("changethislater")
+    os.environ.get('ADMIN_USERNAME'): generate_password_hash(os.environ.get('ADMIN_PASSWORD'))
 }
 
 @auth.verify_password
