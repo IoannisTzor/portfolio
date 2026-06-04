@@ -60,7 +60,7 @@
 <div class="projects-grid" id="projects">
     {% for project in projects %}
     <a href="{{ url_for('project', project_id=project.id) }}" class="card-link">
-    <div class="project-card">
+    <div class="project-card" data-technologies="{{ project.technologies.lower() }}">
         <div class="project-title">{{ project.title }}</div>
         <div class="project-desc">{{ project.description }}</div>
         <div class="project-tags">
@@ -73,15 +73,10 @@
     {% endfor %}
 </div>
 <div class="section-label">// SKILLS</div>
-<div class="skills-grid" id="skills"> 
-    <div class = "skill">java</div>
-    <div class = "skill">C#</div>
-    <div class = "skill">Python</div>
-    <div class = "skill">SQL</div>
-    <div class = "skill">HTML/CSS/JS</div>
-    <div class = "skill">Unity</div>
-    <div class = "skill">Android Studio</div>
-    <div class = "skill">Flask</div>
+<div class="skills-grid" id="skills">
+    {% for skill in skills %}
+    <div class="skill">{{ skill }}</div>
+    {% endfor %}
 </div>
 </main>
 <script>
@@ -128,6 +123,41 @@
     }
 
     type();
+
+    const skills = document.querySelectorAll('.skill');
+    const cards = document.querySelectorAll('.project-card');
+    let activeSkill = null;
+
+    skills.forEach(skill => {
+        skill.addEventListener('click', () => {
+            const selected = skill.textContent.toLowerCase();
+
+            if (activeSkill === selected) {
+                activeSkill = null;
+                cards.forEach(card => {
+                    card.style.opacity = '1';
+                    card.closest('a').classList.remove('card-disabled');
+                });
+                skills.forEach(s => s.classList.remove('skill-active'));
+                return;
+            }
+
+            activeSkill = selected;
+            skills.forEach(s => s.classList.remove('skill-active'));
+            skill.classList.add('skill-active');
+
+            cards.forEach(card => {
+                const techs = card.dataset.technologies;
+                if (techs.includes(selected)) {
+                     card.style.opacity = '1';
+                    card.closest('a').classList.remove('card-disabled');
+                } else {
+                    card.style.opacity = '0.2';
+                    card.closest('a').classList.add('card-disabled');
+                }
+            });
+        });
+    });
 </script>
 <footer>
         <div class="footer-copy" id="contact">@ 2026 IOANNIS TZORTZATOS</div>

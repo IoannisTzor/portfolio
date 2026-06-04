@@ -395,3 +395,18 @@ footer {
     color: inherit;
     display: block;
 }
+.skill-active {
+    background: var(--pink);
+    color: var(--bg);
+    border-color: var(--pink);
+}
+* {
+    cursor: default;
+}
+
+a, .skill, .card-link, .card-link * {
+    cursor: pointer;
+}
+.card-disabled {
+    pointer-events: none;
+}

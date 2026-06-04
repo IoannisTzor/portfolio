@@ -13,8 +13,11 @@ db.init_app(app)
 @app.route('/')
 def index():
     projects = Project.query.all()
-    return render_template('index.html',projects = projects)
-
+    skills = set()
+    for project in projects:
+        for tech in project.technologies.split(','):
+            skills.add(tech.strip())
+    return render_template('index.html', projects=projects, skills=skills)
 @app.route('/project/<int:project_id>')
 def project(project_id):
     project = Project.query.get(project_id)
