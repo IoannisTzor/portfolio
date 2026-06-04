@@ -3,9 +3,12 @@ from extensions import db
 from models import Project, Message
 from flask_httpauth import HTTPBasicAuth
 from werkzeug.security import generate_password_hash, check_password_hash
+from dotenv import load_dotenv
+import os
 
+load_dotenv()
 app = Flask(__name__)
-app.secret_key = 'dev-key-change-this-later'
+app.secret_key = os.environ.get('SECRET_KEY')
 auth = HTTPBasicAuth()
 
 users = {
@@ -17,8 +20,8 @@ def verify_password(username, password):
     if username in users and check_password_hash(users.get(username), password):
         return username
 
-# Database config — we'll fill this in properly later
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///portfolio.db'
+
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db.init_app(app)
