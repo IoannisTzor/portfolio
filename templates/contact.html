@@ -18,11 +18,12 @@
             <a href="/#projects">projects</a>
             <a href="/#skills">skills</a>
             <a href="/contact">contact</a>
+            <a href="/admin" class="nav-admin">admin</a>
         </div>
     </nav>
     <main>
 <section class="contact-section">
-    <div class="hero-subtitle">// CONTACT</div>
+    <div class="section-label">// CONTACT</div>
     {% with messages = get_flashed_messages() %}
         {% if messages %}
             {% for message in messages %}
@@ -55,3 +56,4 @@
         </div>
     </footer>
 </div>
+</html>

@@ -1,9 +1,21 @@
 from flask import Flask, render_template, request, flash, redirect, url_for
 from extensions import db
 from models import Project, Message
+from flask_httpauth import HTTPBasicAuth
+from werkzeug.security import generate_password_hash, check_password_hash
 
 app = Flask(__name__)
 app.secret_key = 'dev-key-change-this-later'
+auth = HTTPBasicAuth()
+
+users = {
+    "admin": generate_password_hash("changethislater")
+}
+
+@auth.verify_password
+def verify_password(username, password):
+    if username in users and check_password_hash(users.get(username), password):
+        return username
 
 # Database config — we'll fill this in properly later
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///portfolio.db'
@@ -33,12 +45,45 @@ def contact():
         new_message = Message(name=name, email=email, message=message)
         db.session.add(new_message)
         db.session.commit()
-        flash('Message sent!')
+        flash('Message sent')
         return redirect(url_for('contact'))
     return render_template('contact.html')
 
+@app.route('/admin')
+@auth.login_required
+def admin():
+    projects = Project.query.all()
+    messages = Message.query.all()
+    return render_template('admin.html', projects = projects, messages = messages)
+    
+@app.route('/admin/delete/<int:project_id>', methods = ['POST']) 
+@auth.login_required
+def delete_Project(project_id):
+    id = project_id
+    project = Project.query.get(id)
+    db.session.delete(project)
+    db.session.commit()
+    flash('project deleted')
+    return redirect(url_for('admin'))
+
+@app.route('/admin/add', methods=['GET', 'POST'])
+@auth.login_required
+def add_project():
+    if request.method == 'POST':
+        title = request.form['title']
+        description = request.form['description']
+        tech = request.form['technologies']
+        url = request.form['url']
+        contri = request.form.get('contributors', None)
+        new_project = Project(title=title, description=description, technologies = tech, github_url=url, contributors = contri)
+        db.session.add(new_project)
+        db.session.commit()
+        flash('Project Created')
+        return redirect(url_for('admin'))
+    return render_template('add_project.html')
+    
+    
 with app.app_context():
     db.create_all()
-
 if __name__ == '__main__':
     app.run(debug=True)
